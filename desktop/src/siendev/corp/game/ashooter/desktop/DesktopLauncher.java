@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Golubnichenko Iurii aka Ghost Rider
+ */
+
 package siendev.corp.game.ashooter.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;

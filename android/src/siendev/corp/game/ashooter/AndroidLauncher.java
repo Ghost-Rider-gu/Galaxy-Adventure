@@ -1,10 +1,12 @@
+/*
+ * Copyright (c) 2020. Golubnichenko Iurii aka Ghost Rider
+ */
+
 package siendev.corp.game.ashooter;
 
 import android.os.Bundle;
-
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import siendev.corp.game.ashooter.Ashooter;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
