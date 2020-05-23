@@ -14,13 +14,23 @@ import java.util.List;
 
 public class ParallaxMenuBackground extends Actor {
 
-    private static final String BACKGROUND_IMAGE_RESOURCE = "screens/menu/background/back_planet%s.png";
-    private static final String MENU_BOX_IMAGE = "screens/menu/menu_box.png";
-    private static final String MENU_LOGO_IMAGE = "screens/menu/menu_logo.png";
+    private static final String BACKGROUND_IMAGE_RESOURCE   = "screens/menu/background/back_planet%s.png";
+    private static final String MENU_BOX_IMAGE              = "screens/menu/menu_box.png";
+    private static final String MENU_LOGO_IMAGE             = "screens/menu/menu_logo.png";
+
+    private static final String PLAY_INACTIVE_BUTTON    = "screens/menu/buttons/play_inactive.png";
+    private static final String PLAY_ACTIVE_BUTTON      = "screens/menu/buttons/play_active.png";
+    private static final String EXIT_INACTIVE_BUTTON    = "screens/menu/buttons/exit_inactive.png";
+    private static final String EXIT_ACTIVE_BUTTON      = "screens/menu/buttons/exit_active.png";
+    private static final String CREDITS_INACTIVE_BUTTON = "screens/menu/buttons/credits_inactive.png";
+    private static final String CREDITS_ACTIVE_BUTTON   = "screens/menu/buttons/credits_active.png";
 
     private final List<Texture> textureList;
     private final Texture boxImage;
     private final Texture logoImage;
+    private final Texture playButton;
+    private final Texture exitButton;
+    private final Texture creditsButton;
 
     private int parallaxSpeed;
     private int parallaxScroll;
@@ -33,6 +43,9 @@ public class ParallaxMenuBackground extends Actor {
         }
         this.boxImage = new Texture(Gdx.files.internal(MENU_BOX_IMAGE));
         this.logoImage = new Texture(Gdx.files.internal(MENU_LOGO_IMAGE));
+        this.playButton = new Texture(Gdx.files.internal(PLAY_INACTIVE_BUTTON));
+        this.exitButton = new Texture(Gdx.files.internal(EXIT_INACTIVE_BUTTON));
+        this.creditsButton = new Texture(Gdx.files.internal(CREDITS_INACTIVE_BUTTON));
 
         this.parallaxScroll = 0;
         this.parallaxSpeed = 0;
@@ -66,15 +79,33 @@ public class ParallaxMenuBackground extends Actor {
                     false,
                     false);
         }
+
+        float width = (float) Gdx.graphics.getWidth() / 2;
+        float height = (float) Gdx.graphics.getHeight() / 2;
         batch.draw(boxImage,
-                (Gdx.graphics.getWidth() / 2) - (boxImage.getWidth() / 2),
-                (Gdx.graphics.getHeight() / 2) - (boxImage.getHeight() / 2),
+                width - (boxImage.getWidth() * 1.0f / 2),
+                height - (boxImage.getHeight() * 1.0f / 2),
                 boxImage.getWidth(),
                 boxImage.getHeight());
         batch.draw(logoImage,
-                (Gdx.graphics.getWidth() / 2) - (boxImage.getWidth() / 2) - 15,
-                (Gdx.graphics.getHeight() / 2),
+                width - (boxImage.getWidth() * 1.0f / 2) - 15,
+                height,
                 logoImage.getWidth(),
                 logoImage.getHeight());
+        batch.draw(playButton,
+                width - (playButton.getWidth() * 1.0f / 2),
+                (height - (playButton.getHeight() * 1.0f / 2)) + (playButton.getHeight() + 20),
+                playButton.getWidth(),
+                playButton.getHeight());
+        batch.draw(creditsButton,
+                width - (creditsButton.getWidth() * 1.0f / 2),
+                height - (creditsButton.getHeight() * 1.0f / 2),
+                creditsButton.getWidth(),
+                creditsButton.getHeight());
+        batch.draw(exitButton,
+                width - (exitButton.getWidth() * 1.0f / 2),
+                (height - (exitButton.getHeight() * 1.0f / 2)) - (exitButton.getHeight() + 20),
+                exitButton.getWidth(),
+                exitButton.getHeight());
     }
 }
